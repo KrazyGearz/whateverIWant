@@ -17,6 +17,20 @@ if (app.get("env") === "development") {
   });
 }
 app.use(express.static("public"));
+
+app.get("/form", (req, res) => {
+  console.log(req);
+  console.log(res);
+  res.status(201);
+  res.send("OK");
+});
+
+app.post("/form", (req, res) => {
+  console.log(req.body);
+  console.log(res.body);
+  res.send("OK");
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
