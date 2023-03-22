@@ -17,7 +17,8 @@ const handleFormSubmission = async (event) => {
 
   fetch("/form", {
     method: "POST",
-    body: data,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ auth, post }),
   });
 };
 const shouldntRun = () => {

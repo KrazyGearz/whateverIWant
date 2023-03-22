@@ -1,8 +1,10 @@
 const express = require("express");
 const livereload = require("livereload");
+const bodyParser = require("body-parser");
 const path = require("path");
 const app = express();
 const port = 3000;
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 if (app.get("env") === "development") {
   const liveReloadServer = livereload.createServer();
@@ -25,7 +27,7 @@ app.get("/form", (req, res) => {
   res.send("OK");
 });
 
-app.post("/form", (req, res) => {
+app.post("/form", bodyParser.json(), (req, res) => {
   console.log(req.body);
   console.log(res.body);
   res.send("OK");
